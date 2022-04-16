@@ -14,6 +14,8 @@ Plugin 'VundleVim/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'preservim/nerdtree'
+Plugin 'vim-airline/vim-airline'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -25,3 +27,5 @@ set so=25
 set shiftwidth=2
 set autoindent
 set smartindent
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
