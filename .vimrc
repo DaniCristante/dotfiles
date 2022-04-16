@@ -19,7 +19,6 @@ Plugin 'jiangmiao/auto-pairs'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-
 set number relativenumber
 syntax on
 set so=25
