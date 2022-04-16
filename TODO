@@ -7,6 +7,7 @@ TODOs:
         ✘ 3. install stow @cancelled(22-04-17 01:22)
             ✔ 3.1 setup symlinks @done(22-04-17 01:22)
 
+    ☐ create git config file
     - https://github.com/VundleVim/Vundle.vim
     - https://github.com/sorin-ionescu/prezto
 
