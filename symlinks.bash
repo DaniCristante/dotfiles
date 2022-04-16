@@ -17,9 +17,16 @@ for file in "${filesToLink[@]}"; do
 		if [ ! -f $file ]; then
 				ln -fs $sourcefile $destinationFile
 		else
-				read -p "File aready exists, override it?" yn
-				case $yn in
-						[Yy]* 
-				esac
+				read -p "File $file already exists, do you want to OVERRIDE it?" -n 1 -r
+
+				if [[ $REPLY =~ ^[Yy]$ ]]; then
+						echo "Overriding $file in $HOME"
+						ln -fs $sourceFile $destinationFile
+				else
+						echo "Skipping symlinking of $file"
+						continue;
+				fi
 		fi
 done
+
+echo "Files successfully linked"
