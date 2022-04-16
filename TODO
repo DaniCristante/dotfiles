@@ -1,3 +1,5 @@
 TODOs:
     ☐ bash aliases not working after restarting konsole
     ☐ create script to clone zpresto and vundle plugin manager
+    - https://github.com/VundleVim/Vundle.vim
+    - https://github.com/sorin-ionescu/prezto
