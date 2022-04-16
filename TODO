@@ -1,7 +1,11 @@
 TODOs:
     ✔ bash aliases not working after restarting konsole @done(22-04-16 15:49)
-    ☐ create script to clone zpresto and vundle plugin manager
+    ☐ create script to bootstrap
+        ☐ 1. clone zpresto
+        ☐ 2. clone vundle plugin manager
+            ☐ 2.1 install plugins
+        ☐ 3. install stow
+            ☐ 3.1 setup symlinks
+
     - https://github.com/VundleVim/Vundle.vim
     - https://github.com/sorin-ionescu/prezto
-    ☐ script to setup symlinks
-        - check stow
