@@ -4,8 +4,12 @@ TODOs:
         ☐ 1. clone zpresto
         ☐ 2. clone vundle plugin manager
             ☐ 2.1 install plugins
-        ☐ 3. install stow
-            ☐ 3.1 setup symlinks
+        ✘ 3. install stow @cancelled(22-04-17 01:22)
+            ✔ 3.1 setup symlinks @done(22-04-17 01:22)
 
     - https://github.com/VundleVim/Vundle.vim
     - https://github.com/sorin-ionescu/prezto
+
+IMPROVEMENTS:
+    symlinking:
+        ☐ what happens if any command of symlinking script fails?
