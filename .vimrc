@@ -22,4 +22,6 @@ filetype plugin indent on    " required
 set number relativenumber
 syntax on
 set so=25
-set tabstop=4
+set shiftwidth=2
+set autoindent
+set smartindent
