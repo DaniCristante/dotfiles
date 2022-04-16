@@ -13,7 +13,7 @@ for file in "${filesToLink[@]}"; do
   sourceFile="$PWD/$file"
   destinationFile="$HOME/$file"
   if [ ! -f $file ]; then
-    ln -fs $sourcefile $destinationFile
+    ln -s $sourcefile $destinationFile
   else
     read -p "File $file already exists, do you want to OVERRIDE it?" -n 1 -r
     if [[ $REPLY =~ ^[Yy]$ ]]; then
