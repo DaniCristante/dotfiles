@@ -4,7 +4,8 @@ filesToLink=(
   ".zshrc"
   ".zpreztorc"
   ".vimrc"
-  ".bash_aliases"
+  ".bash_aliases",
+  ".gitconfig"
 )
 
 echo "setting up symlinks..."
