@@ -7,3 +7,7 @@ alias la="ls -la"
 alias lh="ls -ld .?*"
 alias vimstall="vim +PluginInstall +qall"
 alias p="python3 $1"
+
+gdc () {
+  git diff-tree --no-commit-id --name-only -r "$@";
+}
