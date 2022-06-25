@@ -3,3 +3,4 @@
   email = daniel.cristante@gmail.com
 [core]
   editor = vim
+	excludesfile = /home/dani/.gitignore
