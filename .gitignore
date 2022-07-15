@@ -3,3 +3,4 @@
 TODO
 Thumbs.db
 .idea
+.phpunit.result.cache
