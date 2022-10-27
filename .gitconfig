@@ -7,3 +7,6 @@
 	excludesfile = /home/dani/.gitignore
 [commit]
 	gpgsign = true
+
+[includeif "gitdir:~/runroom/"]
+  path = ~./dotfiles/runroom/.gitconfig
