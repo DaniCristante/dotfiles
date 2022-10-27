@@ -4,11 +4,14 @@ echo "Essential configuration installer"
 echo "👉 Updating packages"
 sudo apt-get update -y > /dev/null
 
-echo "👉 Install GIT ZSH and VIM"
-sudo apt-get install git zsh vim -y > /dev/null
+echo "👉 Install GIT ZSH and VIM CURL"
+sudo apt-get install git zsh vim curl -y > /dev/null
 
 echo "👉 Change default terminal to ZSH"
 chsh -s $(which zsh) > /dev/null
+
+echo "👉 Change default terminal to ZSH"
+npm install -g yarn > /dev/null
 
 echo "👉 Install Konsole"
 sudo apt-get install konsole -y > /dev/null
@@ -48,6 +51,9 @@ case $(uname | tr '[:upper:]' '[:lower:]') in
     fi
     ;;
 esac
+
+echo "👉  Cloning nvm into: ${HOME}/.nvm"
+git clone https://github.com/nvm-sh/nvm.git "${HOME}/.nvm" 2> /dev/null || git -C "${HOME}/.nvm" checkout `git -C "${HOME}/.nvm" describe --abbrev=0 --tags --match "v[0-9]*" $(git -C "${HOME}/.nvm" rev-list --tags --max-count=1)`
 
 echo "👉  Cloning prezto into: ${HOME}/.zprezto"
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${HOME}/.zprezto" 2> /dev/null || git -C "${HOME}/.zprezto" pull
