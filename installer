@@ -52,8 +52,18 @@ case $(uname | tr '[:upper:]' '[:lower:]') in
     ;;
 esac
 
+#install MKCERT > 
+# sudo apt install libnss3-tools REQUIRED
+# BREW REQUIRED 
+# /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# brew install mkcert
+
 echo "👉  Cloning nvm into: ${HOME}/.nvm"
 git clone https://github.com/nvm-sh/nvm.git "${HOME}/.nvm" 2> /dev/null || git -C "${HOME}/.nvm" checkout `git -C "${HOME}/.nvm" describe --abbrev=0 --tags --match "v[0-9]*" $(git -C "${HOME}/.nvm" rev-list --tags --max-count=1)`
+
+# ^
+#Forgot to install a nvm version at least
 
 echo "👉  Cloning prezto into: ${HOME}/.zprezto"
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${HOME}/.zprezto" 2> /dev/null || git -C "${HOME}/.zprezto" pull

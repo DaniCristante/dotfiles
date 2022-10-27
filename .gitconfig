@@ -4,6 +4,3 @@
 [core]
   editor = vim
 	excludesfile = /home/dani/.gitignore
-
-[includeif "gitdir:~/runroom/"]
-  path = ~./dotfiles/runroom/.gitconfig
