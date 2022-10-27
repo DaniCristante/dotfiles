@@ -1,12 +1,9 @@
 [user]
   name = Daniel Cristante
   email = daniel.cristante@gmail.com
-	signingkey = BD572537E4D5434E
 [core]
   editor = vim
 	excludesfile = /home/dani/.gitignore
-[commit]
-	gpgsign = true
 
 [includeif "gitdir:~/runroom/"]
   path = ~./dotfiles/runroom/.gitconfig
