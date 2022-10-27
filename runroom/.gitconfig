@@ -1,0 +1,7 @@
+[user]
+  name = Daniel Cristante
+  email = daniel@runroom.com
+	signingkey = BD572537E4D5434E
+[core]
+  editor = vim
+	excludesfile = /home/dani/.gitignore
