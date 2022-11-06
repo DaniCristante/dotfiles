@@ -4,13 +4,16 @@ echo "Essential configuration installer"
 echo "👉 Updating packages"
 sudo apt-get update -y > /dev/null
 
-echo "👉 Install GIT ZSH and VIM CURL"
+echo "👉 Install GIT ZSH VIM and CURL"
 sudo apt-get install git zsh vim curl -y > /dev/null
 
 echo "👉 Change default terminal to ZSH"
 chsh -s $(which zsh) > /dev/null
 
-echo "👉 Change default terminal to ZSH"
+echo "👉 Install Node and npm"
+sudo apt install nodejs npm -y > /dev/null
+
+echo "👉 Install yarn globally"
 npm install -g yarn > /dev/null
 
 echo "👉 Install Konsole"
@@ -52,12 +55,12 @@ case $(uname | tr '[:upper:]' '[:lower:]') in
     ;;
 esac
 
-#install MKCERT > 
-# sudo apt install libnss3-tools REQUIRED
-# BREW REQUIRED 
-# /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-# eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-# brew install mkcert
+echo "👉  Install mkcert and its required tools"
+sudo apt install libnss3-tools REQUIRED
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+test -r ~/.zshrc && echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.zshrc
+brew install mkcert
 
 echo "👉  Cloning nvm into: ${HOME}/.nvm"
 git clone https://github.com/nvm-sh/nvm.git "${HOME}/.nvm" 2> /dev/null || git -C "${HOME}/.nvm" checkout `git -C "${HOME}/.nvm" describe --abbrev=0 --tags --match "v[0-9]*" $(git -C "${HOME}/.nvm" rev-list --tags --max-count=1)`
