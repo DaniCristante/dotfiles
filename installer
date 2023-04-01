@@ -1,0 +1,88 @@
+#!/bin/bash
+echo "Essential configuration installer"
+
+echo "👉 Updating packages"
+sudo apt-get update -y > /dev/null
+
+echo "👉 Install GIT ZSH VIM and CURL"
+sudo apt-get install git zsh vim curl -y > /dev/null
+
+echo "👉 Change default terminal to ZSH"
+chsh -s $(which zsh) > /dev/null
+
+echo "👉 Install Node and npm"
+sudo apt install nodejs npm -y > /dev/null
+
+echo "👉 Install yarn globally"
+npm install -g yarn > /dev/null
+
+echo "👉 Install Konsole"
+sudo apt-get install konsole -y > /dev/null
+
+echo "👉 Installing docker"
+case $(uname | tr '[:upper:]' '[:lower:]') in
+  linux*)
+    sudo apt-get update > /dev/null
+
+    sudo apt-get install \
+        ca-certificates \
+        curl \
+        gnupg \
+        lsb-release -y > /dev/null
+
+    sudo mkdir -p /etc/apt/keyrings
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
+    echo \
+      "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+      $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+    sudo apt-get update > /dev/null
+    sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin -y > /dev/null
+
+    sudo groupadd docker
+    sudo usermod -aG docker $USER
+    ;;
+  *)
+    echo "Please refer to the official documentation for your Operating System: https://docs.docker.com/desktop/"
+    echo -n "Would you like to proceed with the next steps? (y/n)"
+    read reply
+
+    if [ "$reply" = n -o "$reply" = N ]
+    then
+       exit
+    fi
+    ;;
+esac
+
+echo "👉  Install mkcert and its required tools"
+sudo apt install libnss3-tools REQUIRED
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+test -r ~/.zshrc && echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.zshrc
+brew install mkcert
+
+echo "👉  Cloning nvm into: ${HOME}/.nvm"
+git clone https://github.com/nvm-sh/nvm.git "${HOME}/.nvm" 2> /dev/null || git -C "${HOME}/.nvm" checkout `git -C "${HOME}/.nvm" describe --abbrev=0 --tags --match "v[0-9]*" $(git -C "${HOME}/.nvm" rev-list --tags --max-count=1)`
+
+# ^
+#Forgot to install a nvm version at least
+
+echo "👉  Cloning prezto into: ${HOME}/.zprezto"
+git clone --recursive https://github.com/sorin-ionescu/prezto.git "${HOME}/.zprezto" 2> /dev/null || git -C "${HOME}/.zprezto" pull
+
+echo "👉 Cloning Vundle into: ${HOME}/.vim/bundle/Vundle.vim"
+git clone https://github.com/VundleVim/Vundle.vim.git "${HOME}/.vim/bundle/Vundle.vim"
+
+#TODO
+#Install PHP
+#sudo apt install --no-install-recommends php8.1 -y
+
+#Install composer
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php -r "if (hash_file('sha384', 'composer-setup.php') === '55ce33d7678c5a611085589f1f3ddf8b3c52d662cd01d4ba75c0ee0459970c2200a51f492d557530c71c15d8dba01eae') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+
+#move composer binary
+#sudo mv composer.phar /usr/local/bin/composer

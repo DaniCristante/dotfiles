@@ -4,6 +4,7 @@ filesToLink=(
   ".zshrc"
   ".zpreztorc"
   ".vimrc"
+  ".ssh/config"
   ".bash_aliases"
   ".gitconfig"
   ".gitignore"
